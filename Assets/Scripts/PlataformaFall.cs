@@ -40,6 +40,7 @@ public class PlataformaFall : MonoBehaviour
     {
         rb2D.isKinematic = false;
         pc2D.isTrigger = true;
+        pc2D.isTrigger = true;
         
     }
 

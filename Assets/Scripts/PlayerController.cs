@@ -13,9 +13,12 @@ public class PlayerController : MonoBehaviour
     public float jumpPower = 6.5f;
     bool jump;
     bool dobleSalto;
-    
-    
-    
+    public Transform scale;
+    public int vida = 50;
+    public GameObject deathEffect;
+
+
+
 
 
     void Start()
@@ -34,15 +37,15 @@ public class PlayerController : MonoBehaviour
             dobleSalto = true;
         }
 
-            if (Input.GetButtonDown("Jump") )
+        if (Input.GetButtonDown("Jump"))
         {
-            
+
             if (grounded)
-            { 
-                   
+            {
+
                 jump = true;
                 dobleSalto = true;
-            } 
+            }
             else if (dobleSalto)
             {
                 jump = true;
@@ -78,52 +81,58 @@ public class PlayerController : MonoBehaviour
         if (h < -0.1f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
+
         }
 
-
-
-       
         if (jump == true)
         {
 
 
-            rb2D.AddForce(Vector2.up * jumpPower,ForceMode2D.Impulse);
+            rb2D.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jump = false;
-            
-            
-                      
+
+
+
+        }
+    }
+
+        void OnBecameInvisible()
+        {
+            transform.position = new Vector3(1f, 1f, 1f);
         }
 
-        
+        public void EnemyJump()
+        {
 
-       
-       
+            jump = true;
+        }
+
+        public void EnemyKnockBack(float enemyPosX)
+        {
+            jump = true;
+            float side = Mathf.Sign(enemyPosX - transform.position.x);
+            rb2D.AddForce(Vector2.left * side * jumpPower, ForceMode2D.Impulse);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            vida -= damage;
+
+            if (vida <= 0)
+            {
+                Die();
+            }
+
+        }
+
+        void Die()
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
 
 
 
 
     }
 
-    void OnBecameInvisible()
-    {
-        transform.position = new Vector3(1f, 1f, 1f);
-    }
-
-    public void EnemyJump()
-    {
-
-        jump = true;
-    }
-
-    public void EnemyKnockBack(float enemyPosX)
-    {
-        jump = true;
-        float side = Mathf.Sign(enemyPosX - transform.position.x);
-        rb2D.AddForce(Vector2.left* side * jumpPower, ForceMode2D.Impulse);
-    }
-
-
-
-
-
-}

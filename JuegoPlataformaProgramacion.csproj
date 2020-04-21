@@ -695,15 +695,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\BulletEnemigo.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
+    <Compile Include="Assets\Scripts\DestruirAnimacion.cs" />
     <Compile Include="Assets\Scripts\DibujarLinea.cs" />
+    <Compile Include="Assets\Scripts\Disparo.cs" />
+    <Compile Include="Assets\Scripts\DisparoEnemigo.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\MovimientoDePlataformas.cs" />
     <Compile Include="Assets\Scripts\PlataformaFall.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PowerUp.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Sprites\explosions-pack-web\license.txt" />
     <None Include="Packages\com.unity.2d.animation\Editor\Assets\LayoutOverlay\LayoutOverlay.uxml" />
     <None Include="Packages\com.unity.2d.animation\Editor\Assets\LayoutOverlay\LayoutOverlayStyle.uss" />
     <None Include="Packages\com.unity.2d.animation\Editor\Assets\LayoutOverlay\ScrollableToolbar.uss" />
